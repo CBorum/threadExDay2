@@ -1,4 +1,4 @@
-package ex2;
+package fibonacciobserver;
 
 
 import java.util.ArrayList;
@@ -17,10 +17,18 @@ public class FibonacciTask extends Thread{
     }
     @Override
     public void run() {
-        //Call the Fibonacci method from here
+        tal = fibonacci(tal);
         //long tal = ......
         for(FibonacciObserver observer : observers){
           observer.dataReady(tal);
         }
     }
+    
+    public long fibonacci(long n) {
+        if (n == 0 || n == 1) {return n;}
+        else {
+            return fibonacci(n-1) + fibonacci(n-2);
+        }
+    }
+    
 }
